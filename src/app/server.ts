@@ -1,3 +1,4 @@
+// src/app/server.ts
 import express from "express";
 import { registerRoutes } from "./routes";
 
