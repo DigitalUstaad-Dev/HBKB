@@ -1,4 +1,8 @@
 // src/modules/leads/index.ts
-import { LeadsModule } from './module';
-
-export const leadsModule = new LeadsModule();
+export {
+  listLeads,
+  getLead,
+  createLead,
+  updateLead,
+  deleteLead,
+} from './module';
