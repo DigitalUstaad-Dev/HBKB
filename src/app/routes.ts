@@ -1,32 +1,13 @@
 // src/app/routes.ts
+import { Router } from '../core/http/router';
+import { leadsModule } from '../modules/leads';
 
-import { RouteDefinition } from "../core/http/types";
+export function registerRoutes() {
+  const router = new Router();
 
-// Health route
-import healthHandler from "./health";
+  router.get('/health', () => ({ status: 'ok' }));
 
-// Leads module handlers
-import { getAllLeads, createLead } from "../modules/leads";
+  router.group('/leads', leadsModule);
 
-export const routes: RouteDefinition[] = [
-  // Health check
-  {
-    method: "get",
-    path: "/health",
-    handler: healthHandler,
-  },
-
-  // Leads list
-  {
-    method: "get",
-    path: "/leads",
-    handler: getAllLeads,
-  },
-
-  // Leads create
-  {
-    method: "post",
-    path: "/leads",
-    handler: createLead,
-  },
-];
+  return router;
+}
