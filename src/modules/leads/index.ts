@@ -1,9 +1,4 @@
-import { createApp } from "./app/server";
+// src/modules/leads/index.ts
+import { LeadsModule } from './module';
 
-const port = Number(process.env.PORT) || 3000;
-
-const app = createApp();
-
-app.listen(port, () => {
-  console.log(`[HBKB] API running on http://localhost:${port}`);
-});
+export const leadsModule = new LeadsModule();
