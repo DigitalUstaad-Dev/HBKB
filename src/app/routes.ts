@@ -1,14 +1,32 @@
 // src/app/routes.ts
 
-import { Express } from "express";
-import { createApiRouter } from "../core/http/router";
+import { RouteDefinition } from "../core/http/types";
 
-export function registerRoutes(app: Express) {
-  // health check
-  app.get("/health", (_req, res) => {
-    res.json({ status: "ok" });
-  });
+// Health route
+import healthHandler from "./health";
 
-  // API routes
-  app.use("/api", createApiRouter());
-}
+// Leads module handlers
+import { getAllLeads, createLead } from "../modules/leads";
+
+export const routes: RouteDefinition[] = [
+  // Health check
+  {
+    method: "get",
+    path: "/health",
+    handler: healthHandler,
+  },
+
+  // Leads list
+  {
+    method: "get",
+    path: "/leads",
+    handler: getAllLeads,
+  },
+
+  // Leads create
+  {
+    method: "post",
+    path: "/leads",
+    handler: createLead,
+  },
+];
