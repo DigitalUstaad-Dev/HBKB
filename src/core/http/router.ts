@@ -11,7 +11,7 @@ import {
 export function createAppRouter() {
   const router = Router();
 
-  // Simple health check
+  // Health check
   router.get('/health', (_req: Request, res: Response) => {
     res.json({ status: 'ok' });
   });
