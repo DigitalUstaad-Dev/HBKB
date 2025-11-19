@@ -1,12 +1,8 @@
 // src/app/server.ts
-import express from "express";
-import { registerRoutes } from "./routes";
+import { registerRoutes } from './routes';
+import { Router } from '../core/http/router';
 
 export function createApp() {
-  const app = express();
-
-  app.use(express.json());
-  registerRoutes(app);
-
-  return app;
+  const router = registerRoutes();
+  return router.buildServer();
 }
